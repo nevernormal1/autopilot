@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930161942) do
+ActiveRecord::Schema.define(:version => 20110930165042) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110930161942) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pivotal_id"
   end
 
 end

@@ -34,6 +34,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'webmock'
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
