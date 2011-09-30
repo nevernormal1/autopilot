@@ -6,8 +6,8 @@ Feature: System sends backlog
 
   Scenario: Send items in backlog
     Given I have the following project:
-      | Name  | Token | Email                       |
-      | fbolt | ABCD  | development@inventables.com |
+      | Name  | Token | Email                       | Pivotal ID |
+      | fbolt | ABCD  | development@inventables.com | 1234       |
     And my project has the following stories in the backlog:
       | Name           | Description                      | Estimate | Type    | Current State |
       | Variety widget | Show varieties in a table        | 1        | feature | unstarted     |
