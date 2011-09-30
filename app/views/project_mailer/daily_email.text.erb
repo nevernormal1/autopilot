@@ -1,7 +1,7 @@
-There <%= @project.current.size == 1 ? 'is' : 'are' %> <%= pluralize @project.current.size, "card" %> in progress:
+There <%= card_count_header(@project.current) %> in progress:
 
 <%= render :partial => 'card', :collection => @project.current %>
 
-There <%= @project.backlog.size == 1 ? 'is' : 'are' %> <%= pluralize @project.backlog.size, "card" %> in the backlog prioritized as follows:
+There <%= card_count_header(@project.backlog) %> in the backlog prioritized as follows:
 
 <%= render :partial => 'card', :collection => @project.backlog %>
