@@ -29,6 +29,9 @@ Capybara.default_selector = :css
 #
 ActionController::Base.allow_rescue = false
 
+require 'email_spec' # add this line if you use spork
+require 'email_spec/cucumber'
+
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin

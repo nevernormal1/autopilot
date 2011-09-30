@@ -39,4 +39,5 @@ group :test do
   gem 'database_cleaner'
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'email_spec'
 end

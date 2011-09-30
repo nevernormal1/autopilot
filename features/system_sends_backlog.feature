@@ -13,15 +13,11 @@ Feature: System sends backlog
       | Variety widget | Show varieties in a table        | 1        | feature | unstarted     |
       | Footer is belt | Expected a footer but got a belt | -1       | bug     | unstarted     |
     When the notifier runs
-    Then an email should be sent to "development@inventables.com"
-    And the email should include the following copy:
-    """
-    There are 2 cards in the backlog prioritized as follows:
-
-    1. Variety widget (1 point feature)
-    Show varieties in a table
-
-    2. Footer is belt (bug)
-    Expected a footer but got a belt
-    """
+    Then "development@inventables.com" should receive an email with subject "Your fbolt backlog"
+    When they open the email
+    Then they should see "There are 2 cards in the backlog prioritized as follows:" in the email body
+    And they should see "1. Variety widget (1 point feature)" in the email body
+    And they should see "Show varieties in a table" in the email body
+    And they should see "2. Footer is belt (bug)" in the email body
+    And they should see "Expected a footer but got a belt" in the email body
 
