@@ -1,7 +1,7 @@
 class ProjectMailer < ActionMailer::Base
   helper :application
 
-  default from: "support@inventables.com"
+  default from: "jeff.a.talbot@gmail.com"
 
   def daily_email(project)
     @project = project
