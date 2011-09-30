@@ -1,0 +1,4 @@
+rvm --create 1.9.2@autopilot
+echo "Loading bundle..."
+bundle install --without=production
+
