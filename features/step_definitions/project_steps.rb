@@ -9,9 +9,7 @@ Given /^I have the following project:$/ do |table|
       :pivotal_id => row['Pivotal ID']
     )
   end
-end
 
-Given /^my project has the following stories in the backlog:$/ do |table|
   xml = build_project(@project)
   stub_request(
     :any,
@@ -26,6 +24,40 @@ Given /^my project has the following stories in the backlog:$/ do |table|
     "https://www.pivotaltracker.com/services/v3/projects/#{@project.pivotal_id}/stories"
   ).with(
     :query => {"filter" => "current_state:unstarted story_type:feature,chore,bug"}
+  ).to_return(
+    :body => "<stories></stories>",
+    :status => 200
+  )
+
+  stub_request(
+    :any,
+    "https://www.pivotaltracker.com/services/v3/projects/#{@project.pivotal_id}/stories"
+  ).with(
+    :query => {"filter" => "current_state:started story_type:feature,chore,bug"}
+  ).to_return(
+    :body => "<stories></stories>",
+    :status => 200
+  )
+end
+
+Given /^my project has the following stories in the backlog:$/ do |table|
+  stub_request(
+    :any,
+    "https://www.pivotaltracker.com/services/v3/projects/#{@project.pivotal_id}/stories"
+  ).with(
+    :query => {"filter" => "current_state:unstarted story_type:feature,chore,bug"}
+  ).to_return(
+    :body => build_stories(table),
+    :status => 200
+  )
+end
+
+Given /^my project has the following stories in progress:$/ do |table|
+  stub_request(
+    :any,
+    "https://www.pivotaltracker.com/services/v3/projects/#{@project.pivotal_id}/stories"
+  ).with(
+    :query => {"filter" => "current_state:started story_type:feature,chore,bug"}
   ).to_return(
     :body => build_stories(table),
     :status => 200

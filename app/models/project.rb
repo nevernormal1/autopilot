@@ -4,6 +4,10 @@ class Project < ActiveRecord::Base
   validates_presence_of :token
   validates_presence_of :email
 
+  def current
+    project.current
+  end
+
   def backlog
     project.backlog
   end

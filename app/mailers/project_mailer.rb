@@ -5,7 +5,7 @@ class ProjectMailer < ActionMailer::Base
     @project = project
     mail(
       :to => project.email,
-      :subject => "Your #{project.name} backlog"
+      :subject => "#{project.name} Pivotal Queue"
     )
   end
 end

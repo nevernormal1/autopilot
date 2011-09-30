@@ -1,3 +1,9 @@
+There are <%= @project.current.size %> cards in progress:
+
+<% @project.current.each_with_index do |card, index| %>
+<%= index + 1 %>. <%= card.name %> (<%= pluralize(card.estimate, "point") + " " if card.estimate && card.estimate > 0 %><%= card.story_type %>)
+<% end %>
+
 There are <%= @project.backlog.size %> cards in the backlog prioritized as follows:
 
 <% @project.backlog.each_with_index do |card, index| %>
