@@ -6,7 +6,7 @@ module TrackerWrapper
     end
 
     def backlog
-      @backlog ||= project.stories.all(:current_state => 'unstarted')
+      @backlog ||= project.stories.all(:current_state => 'unstarted', :story_type => ['feature', 'chore', 'bug'])
     end
 
     def project

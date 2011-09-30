@@ -25,7 +25,7 @@ Given /^my project has the following stories in the backlog:$/ do |table|
     :any,
     "https://www.pivotaltracker.com/services/v3/projects/#{@project.pivotal_id}/stories"
   ).with(
-    :query => {"filter" => "current_state:unstarted"}
+    :query => {"filter" => "current_state:unstarted story_type:feature,chore,bug"}
   ).to_return(
     :body => build_stories(table),
     :status => 200
@@ -47,6 +47,7 @@ def build_stories(story_table)
   builder.instruct!
   builder.stories do |stories|
     story_table.hashes.each do |row|
+      next if row['Type'] =~ /release/i
       stories.story do |story|
         story.name row['Name']
         story.description row['Description']
