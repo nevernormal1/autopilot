@@ -35,6 +35,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'timecop'
   gem 'webmock'
   gem 'cucumber-rails'
   gem 'capybara'

@@ -7,7 +7,7 @@ class ProjectMailer < ActionMailer::Base
     @project = project
     mail(
       :to => project.email,
-      :subject => "#{project.name} Pivotal Queue"
+      :subject => "#{project.name} Pivotal Queue: #{Time.now.strftime('%m/%d/%Y')}"
     )
   end
 end

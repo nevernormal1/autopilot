@@ -5,7 +5,8 @@ Feature: System sends backlog
   So that I can prioritize the queue
 
   Scenario: Send items in backlog
-    Given I have the following project:
+    Given today is "Sep 30 2011"
+    And I have the following project:
       | Name  | Token | Email                       | Pivotal ID |
       | fbolt | ABCD  | development@inventables.com | 1234       |
     And my project has the following stories in the backlog:
@@ -14,7 +15,7 @@ Feature: System sends backlog
       | Footer is belt  | -1       | bug     | unstarted     |
       | Awesome release |          | release | unstarted     |
     When the notifier runs
-    Then "development@inventables.com" should receive an email with subject "fbolt Pivotal Queue"
+    Then "development@inventables.com" should receive an email with subject "fbolt Pivotal Queue: 09/30/2011"
     When they open the email
     Then they should see "There are 2 cards in the backlog prioritized as follows:" in the email body
     And they should see "1. Variety widget (1 point feature)" in the email body
@@ -22,7 +23,8 @@ Feature: System sends backlog
     But they should not see "Awesome release" in the email body
 
   Scenario: Send items in progress
-    Given I have the following project:
+    Given today is "Sep 30 2011"
+    And I have the following project:
       | Name  | Token | Email                       | Pivotal ID |
       | fbolt | ABCD  | development@inventables.com | 1234       |
     And my project has the following stories in progress:
@@ -31,7 +33,7 @@ Feature: System sends backlog
       | Footer is belt  | -1       | bug     | started     |
       | Awesome release |          | release | started     |
     When the notifier runs
-    Then "development@inventables.com" should receive an email with subject "fbolt Pivotal Queue"
+    Then "development@inventables.com" should receive an email with subject "fbolt Pivotal Queue: 09/30/2011"
     When they open the email
     Then they should see "There are 2 cards in progress:" in the email body
     And they should see "1. Variety widget (1 point feature)" in the email body
