@@ -1,7 +1,7 @@
-There <%= card_count_header(@project.current) %> in progress:
+<%= card_count_header(@project.current) %> in progress:
 
 <%= render :partial => 'card', :collection => @project.current %>
 
-There <%= card_count_header(@project.backlog) %> in the backlog prioritized as follows:
+<%= card_count_header(@project.backlog) %> in the backlog prioritized as follows:
 
 <%= render :partial => 'card', :collection => @project.backlog %>
